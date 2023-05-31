@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+class Main {
+    //1157
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        String str = in.next().toUpperCase();
+
+        //총 알파벳 개수의 배열 선언
+        int count[] = new int[26];
+
+        int max = 0;
+        char result = ' ';
+
+
+        for (int i = 0; i < str.length(); i++) {
+            // str의 각 문자를 ASCII 코드로 변환 후 65를 빼면 알파벳의 인덱스를 얻을 수 있음
+            count[str.charAt(i)-65]++;
+            
+            if(max < count[str.charAt(i)-65]){
+                max = count[str.charAt(i)-65];
+                result = str.charAt(i);;
+            }
+            
+            else if (max == count[str.charAt(i)-65]){
+                result = '?';
+            }
+        }
+        System.out.println(result);
+    }
+}
