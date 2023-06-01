@@ -1,0 +1,21 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int a = in.nextInt();
+        int b = in.nextInt();
+
+        in.close();
+
+        //뒤집어서 비교
+        a = Integer.parseInt(new StringBuilder().append(a).reverse().toString());
+        b = Integer.parseInt(new StringBuilder().append(b).reverse().toString());
+
+        System.out.println(a > b ? a : b);
+    }
+
+
+}
