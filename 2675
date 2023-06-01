@@ -1,0 +1,25 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int T = in.nextInt();
+        
+        for (int tc = 0; tc < T; tc++) {
+            int R = in.nextInt();
+            
+            //in.nextLine() 안 됨!
+            //입력 과정에서 공백까지 읽어비리기 때문
+            String S = in.next();
+
+            for(int i =0 ; i<S.length(); i++){
+                for(int j =0; j<R; j++){
+                    System.out.print(S.charAt(i));
+                }
+            }
+            System.out.println();
+        }
+    }
+}
