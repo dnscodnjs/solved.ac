@@ -1,0 +1,25 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int result = (in.nextInt() * in.nextInt() * in.nextInt());
+        String r = Integer.toString(result);
+
+        in.close();
+        
+        int[] arr = new int[10];
+
+        for(int i =0; i< r.length(); i++){
+            //r은 현재 문자열이라 '1'이라는 문자의 아스키 값은 49이다.
+            //문자를 정수로 변환하여 사용 (charAt() - '0')
+            arr[r.charAt(i) - '0']++;
+        }
+        for(int i =0 ; i<arr.length; i++){
+            System.out.print(arr[i]+ " ");
+        }
+
+    }
+}
