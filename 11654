@@ -1,0 +1,15 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        //char 형을 int형으로 타입 변환 시켜주면 그 문자의 아스키 코드로 변환된다.
+
+        Scanner in = new Scanner(System.in);
+
+        String n = in.next();
+
+        char c = n.charAt(0);
+        
+        System.out.println((int)c);
+    }
+}
