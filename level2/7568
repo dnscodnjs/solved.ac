@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int N = in.nextInt();
+
+        //키와 몸무게를 입력받는 배열 생성
+        int[][] arr = new int[N][2];
+
+        for (int i = 0; i < N; i++) {
+            arr[i][0] = in.nextInt();
+            arr[i][1] = in.nextInt();
+
+        }
+
+        for (int i = 0; i < N; i++) {
+            int cnt = 1;
+            for (int j = 0; j < N; j++) {
+                //본인과 비교할 필요 없으니 나머지와 비교하며 자신보다 크면 cnt++
+                if(i!=j && arr[i][0] < arr[j][0] && arr[i][1] < arr[j][1]){
+                    cnt++;
+                }
+            }
+            System.out.print(cnt +" ");
+        }
+    }
+
+}
