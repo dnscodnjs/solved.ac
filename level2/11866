@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int N = in.nextInt();
+        int K = in.nextInt();
+
+        Queue<Integer> que = new LinkedList<>();
+
+        for (int i = 1; i <= N; i++) {
+            que.add(i);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append('<');
+
+        while (que.size() > 1) {
+            for (int i = 0; i < K - 1; i++) {
+                int temp = que.poll();
+                que.offer(temp);
+            }
+            sb.append(que.poll()).append(", ");
+        }
+
+        sb.append(que.poll()).append('>');
+        System.out.println(sb);
+
+
+    }
+}
