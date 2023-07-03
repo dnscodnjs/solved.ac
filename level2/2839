@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int N = in.nextInt();
+        int cnt = 0;
+
+        while (true) {
+            if (N % 5 == 0) {
+                System.out.println((N / 5) + cnt);
+                break;
+            } else {
+                N -= 3;
+                cnt++;
+            }
+            //4 or 7 같은 경우
+            if (N < 0) {
+                System.out.println(-1);
+                break;
+            }
+        }
+    }
+}
