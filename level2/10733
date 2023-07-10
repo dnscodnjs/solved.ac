@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int n = in.nextInt();
+
+        Stack<Integer> stack = new Stack<>();
+
+        for(int i=0; i<n; i++){
+            int k = in.nextInt();
+            if(k == 0){
+                stack.pop();
+            }else{
+                stack.push(k);
+            }
+
+        }
+        int sum =0;
+        while (!stack.isEmpty()){
+            int num = stack.pop();
+            sum += num;
+        }
+        System.out.println(sum);
+    }
+
+}
