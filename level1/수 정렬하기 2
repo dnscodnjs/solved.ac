@@ -1,0 +1,18 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int tc = in.nextInt();
+
+        List<Integer> list = new LinkedList<>();
+
+
+        for (int TC = 0; TC < tc; TC++) {
+            list.add(in.nextInt());
+        }
+        Collections.sort(list);
+        for(Integer i : list){
+            System.out.println(i);
+        }
+    }
+}
