@@ -1,0 +1,66 @@
+
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+
+        int cnt = 0;
+        for (int i = n; i > 0; i--) {
+            if (sequenceNext(i) || sequencePrev(i)) cnt++;
+            System.out.println("------------");
+            System.out.println("i: " + i);
+            System.out.println(sequenceNext(i));
+            System.out.println(sequencePrev(i));
+            System.out.println("cnt : " + cnt);
+            System.out.println("-------------");
+        }
+
+        System.out.println(cnt);
+
+    }
+
+    public static boolean sequenceNext(int n) {
+
+        String str = Integer.toString(n);
+
+        int temp = str.charAt(0) - '0';
+
+        boolean flag = false;
+
+        // temp 9 다음은 0, 0 이전은 9
+
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) - '0' == temp + 1) {
+                flag = true;
+            } else {
+                flag = false;
+                break;
+            }
+            temp += 1;
+        }
+        return flag;
+    }
+
+    public static boolean sequencePrev(int n) {
+
+        String str = Integer.toString(n);
+
+        int temp = str.charAt(0) - '0';
+
+        boolean flag = false;
+
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) - '0' == temp - 1) {
+                flag = true;
+            } else {
+                flag = false;
+                break;
+            }
+            temp -= 1;
+        }
+        return flag;
+    }
+}
