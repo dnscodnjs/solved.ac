@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        List<Integer> list = new ArrayList<>();
+
+        int sum = 0;
+        for (int i = 0; i < 9; i++) {
+            list.add(in.nextInt());
+            sum += list.get(i);
+        }
+
+        int over = sum - 100;
+
+        Collections.sort(list);
+        for (int i = 0; i < list.size()-1; i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(i) + list.get(j) == over) {
+                    list.remove(list.get(j));
+                    list.remove(list.get(i));
+                    break;
+                }
+            }
+        }
+
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+    }
+}
