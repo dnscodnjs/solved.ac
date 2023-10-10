@@ -20,14 +20,13 @@ public class Main {
                 if (list.get(i) + list.get(j) == over) {
                     list.remove(list.get(j));
                     list.remove(list.get(i));
-                    break;
+
+                    for (int k = 0; k < list.size(); k++) {
+                        System.out.println(list.get(k));
+                    }
+                    return;
                 }
             }
-        }
-
-
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
         }
     }
 }
