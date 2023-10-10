@@ -16,8 +16,7 @@ public class Main {
 
         float sum = 0;
         for (int i = 0; i < list.size(); i++) {
-            list.set(i, list.get(i) / max * 100);
-            sum += list.get(i);
+            sum += list.get(i) / max * 100;
         }
 
         System.out.println(sum / list.size());
