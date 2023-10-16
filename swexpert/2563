@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class 2563 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int n = in.nextInt();
+        int[][] confetti = new int[100][100];
+        int cnt = 0;
+
+        for (int TC = 0; TC < n; TC++) {
+            int a = in.nextInt();
+            int b = in.nextInt();
+
+            for (int i = a; i < a + 10; i++) {
+                for (int j = b; j < b + 10; j++) {
+                    if (confetti[i][j] != 1) {
+                        confetti[i][j] = 1;
+                        cnt++;
+                    }
+                }
+            }
+        }
+        System.out.println(cnt);
+    }
+}
