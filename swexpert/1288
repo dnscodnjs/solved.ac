@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class _1288 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int tc = in.nextInt();
+
+        for (int TC = 1; TC <= tc; TC++) {
+            TreeSet<Integer> tree = new TreeSet<>();
+            long n = (long) in.nextInt() ;
+
+            int b = 1;
+            long temp = 0;
+
+            while (true) {
+                temp = n * b;
+                String str = Long.toString(temp);
+                for (String c : str.split("")) {
+                    tree.add(Integer.parseInt(c));
+                }
+                b++;
+
+                if(tree.size() == 10) break;
+            }
+            System.out.println("#" + TC + " " + temp);
+        }
+    }
+}
