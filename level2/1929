@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class Main2 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String str = br.readLine();
+
+        //공백으로 이루어짐 숫자
+        String[] arr = str.split(" ");
+
+        int a = Integer.parseInt(arr[0]);
+        int b = Integer.parseInt(arr[1]);
+
+/*        Scanner in = new Scanner(System.in);
+        int a = in.nextInt();
+        int b = in.nextInt();*/
+
+        for (int i = a; i <= b; i++) {
+            if (prime(i)) System.out.println(i);
+        }
+    }
+
+    public static boolean prime(int n) {
+        if (n < 2) return false;
+        if (n == 2) return true;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+
+        return true;
+    }
+
+}
