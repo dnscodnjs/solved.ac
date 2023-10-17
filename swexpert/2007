@@ -1,0 +1,52 @@
+import java.util.*;
+// 패턴 마디의 길이
+public class Study {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int tc = in.nextInt();
+
+        for (int TC = 1; TC <= tc; TC++) {
+            String str = in.next();
+
+            StringBuilder sb = new StringBuilder();
+
+            int i = 0;
+            String temp = " ";
+            while (true) {
+                sb.append(str, 0, i + 1);
+
+                boolean flag = false;
+                int j = i + 1;
+                while (true) {
+                    if (sb.toString().equals(str.substring(j, j + sb.length()))) {
+                        flag = true;
+                        break;
+                    } else {
+                        i++;
+                        sb = new StringBuilder();
+                        break;
+                    }
+                }
+                if (flag) {
+                    temp = sb.toString();
+                    break;
+                }
+            }
+
+            System.out.println("#" + TC + " " + temp.length());
+/*            sb = new StringBuilder();
+
+            int cnt = 0;
+            for (int k = 0; k < str.length(); k++) {
+                sb.append(str.charAt(k));
+                if(sb.toString().equals(temp)){
+                    sb = new StringBuilder();
+                    cnt++;
+                }
+            }
+            System.out.println("#" + TC + " " +cnt); */
+
+        }
+    }
+}
