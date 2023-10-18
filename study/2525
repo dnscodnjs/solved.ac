@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int time = in.nextInt();
+        int minute = in.nextInt();
+        int plus = in.nextInt();
+
+        int temp = minute + plus;
+        if (temp < 60) System.out.println(time + " " + temp);
+        else {
+            int plusTime = plus / 60;
+            int plusMin = plus % 60;
+
+            time += plusTime;
+            minute += plusMin;
+
+            if(minute >= 60) {
+                time++;
+                minute -= 60;
+            }
+            if(time >= 24) time -= 24;
+
+            System.out.println(time + " " + minute);
+        }
+    }
+}
