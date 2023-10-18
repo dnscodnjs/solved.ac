@@ -1,0 +1,65 @@
+import java.util.*;
+
+//주사위 세개
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        /*List<Integer> list = new ArrayList<>();
+
+        list.add(in.nextInt());
+
+        int jb = 0;
+        for (int i = 1; i < 3; i++) {
+            int n = in.nextInt();
+            if (list.get(i-1) != n) {
+                list.add(n);
+            } else jb = n;
+        }
+
+        int result = 0;
+        Collections.sort(list);
+
+        System.out.println(list);
+
+        if (list.size() == 1) {
+            result += 10000 + list.get(0) * 1000;
+        } else if (list.size() == 2) {
+            result += 1000 + jb * 100;
+        } else if (list.size() == 3) {
+            result += list.get(2) * 100;
+        }
+        System.out.println(result);*/
+
+
+        int a = in.nextInt();
+        int max = a;
+        int b = in.nextInt();
+        if (b > max) max = b;
+        int c = in.nextInt();
+        if (c > max) max = c;
+
+        int result = 0;
+
+        if (a == b) {
+            if (b == c) {
+                result += 10000 + a * 1000;
+            } else {
+                result += 1000 + a * 100;
+            }
+        } else if (b == c) {
+            if (a != c) {
+                result += 1000 + b * 100;
+            }
+        } else if (a == c) {
+            if (b != c) {
+                result += 1000 + a * 100;
+            }
+        } else if (a != b && b != c && a != c) {
+            result += max * 100;
+        }
+        System.out.println(result);
+
+    }
+}
