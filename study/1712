@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        // 고정비용
+        int a = in.nextInt();
+        // 가변 비용
+        int b = in.nextInt();
+        //노트북 한 대 가격
+        int c = in.nextInt();
+
+        long sell = 0;
+        long price = a;
+        int cnt = 0;
+        while (true) {
+            price += b;
+            sell += c;
+            cnt++;
+            if (price < sell) break;
+
+            if (cnt > 2100000000) {
+                cnt = -1;
+                break;
+            }
+        }
+        System.out.println(cnt);
+    }
+}
