@@ -1,0 +1,27 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int king = 1;
+        int queen = 1;
+        int look = 2;
+        int besop = 2;
+        int knight = 2;
+        int phone = 8;
+
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
+        king -= Integer.parseInt(st.nextToken());
+        queen -= Integer.parseInt(st.nextToken());
+        look -= Integer.parseInt(st.nextToken());
+        besop -= Integer.parseInt(st.nextToken());
+        knight -= Integer.parseInt(st.nextToken());
+        phone -= Integer.parseInt(st.nextToken());
+
+        System.out.println(king + " " + queen + " " + look + " " +
+                besop + " " + knight + " " + phone);
+    }
+}
