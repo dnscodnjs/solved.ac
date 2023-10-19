@@ -1,0 +1,63 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int tc = Integer.parseInt(br.readLine());
+
+        for (int TC = 1; TC <= tc; TC++) {
+            int result = 0;
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            int a = Integer.parseInt(st.nextToken());
+            int wordLen = Integer.parseInt(st.nextToken());
+
+            // 2차원 배열로 입력받기
+            int[][] arr = new int[a][a];
+            for (int i = 0; i < a; i++) {
+                st = new StringTokenizer(br.readLine(), " ");
+                for (int j = 0; j < a; j++) {
+                    arr[i][j] = Integer.parseInt(st.nextToken());
+                }
+            }
+
+            // 가로로 확인
+            for (int i = 0; i < a; i++) {
+                int cnt = 0;
+                for (int j = 0; j < a; j++) {
+                    if (arr[i][j] == 1) cnt++;
+                    else {
+                        if (cnt == wordLen) {
+                            cnt = 0;
+                            result++;
+                        } else {
+                            cnt = 0;
+                        }
+                    }
+                }
+                if (cnt == wordLen) result++;
+            }
+
+            // 세로로 확인
+            for (int i = 0; i < a; i++) {
+                int cnt = 0;
+                for (int j = 0; j < a; j++) {
+                    if (arr[j][i] == 1) cnt++;
+                    else {
+                        if (cnt == wordLen) {
+                            cnt = 0;
+                            result++;
+                        } else {
+                            cnt = 0;
+                        }
+                    }
+                }
+                if (cnt == wordLen) result++;
+
+            }
+            System.out.println("#" + TC + " " + result);
+        }
+    }
+}
