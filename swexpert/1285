@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class _1193 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int tc = in.nextInt();
+
+        for (int TC = 1; TC <= tc; TC++) {
+            int num = in.nextInt();
+            int[] arr = new int[num];
+            for (int i = 0; i < num; i++) {
+                arr[i] = Math.abs(in.nextInt());
+            }
+            Arrays.sort(arr);
+            int min = arr[0];
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("#").append(TC).append(" ").append(min);
+
+            int cnt = 1;
+            for(int i =1; i<arr.length; i++){
+                if(arr[i] == min) cnt++;
+            }
+            sb.append(" ").append(cnt);
+
+            System.out.println(sb);
+
+        }
+    }
+}
