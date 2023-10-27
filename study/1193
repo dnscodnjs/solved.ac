@@ -1,0 +1,54 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Main3 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int X = Integer.parseInt(br.readLine());
+        // 크게 돌면서 보는거
+        int i = 0;
+        // i 더하는 거
+        int j = 0;
+
+        while (true) {
+            i++;
+            j += i;
+            if (j >= X) break;
+        }
+
+        // 크게 본거 안에서 몇 번째 인지 확인
+        // i 안에서 밑에서부터 확인하는거
+        j -= X;
+
+        int child = 0;
+        int mom = 0;
+        // 크게 도는게 홀수일 때
+        if (i % 2 != 0) {
+            child = 1;
+            mom = i;
+            for (int k = 0; k < j; k++) {
+                child++;
+                mom--;
+            }
+        }
+        // 짝수 일 때
+        else {
+            child = i;
+            mom = 1;
+            for (int k = 0; k < j; k++) {
+                child--;
+                mom++;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(child).append("/").append(mom);
+        System.out.println(sb);
+
+
+    }
+}
