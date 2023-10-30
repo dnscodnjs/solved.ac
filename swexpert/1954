@@ -1,0 +1,58 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Solution {
+    public static int[] dx = {0, 1, 0, -1};
+    public static int[] dy = {1, 0, -1, 0};
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int tc = Integer.parseInt(br.readLine());
+        for (int TC = 1; TC <= tc; TC++) {
+            int n = Integer.parseInt(br.readLine());
+
+            int[][] arr = new int[n][n];
+
+            for (int i = 0; i < arr.length; i++) {
+                Arrays.fill(arr[i], 0);
+            }
+
+            //bfs?
+            int x = 0;
+            int y = 0;
+            int direction = 0;
+
+            int cnt = 1;
+
+            for (int i = 0; i < n * n; i++) {
+                arr[x][y] = cnt;
+                cnt++;
+                int nx = x + dx[direction];
+                int ny = y + dy[direction];
+
+                if (nx >= 0 && nx < n && ny >= 0 && ny < n && arr[nx][ny] == 0) {
+                    x = nx;
+                    y = ny;
+                } else {
+                    direction = (direction + 1) % 4;
+                    x += dx[direction];
+                    y += dy[direction];
+
+                }
+            }
+
+            System.out.println("#" + TC);
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr[i].length; j++) {
+                    System.out.print(arr[i][j] + " ");
+                }
+                System.out.println();
+            }
+        }
+
+    }
+
+}
