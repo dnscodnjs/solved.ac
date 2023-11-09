@@ -1,0 +1,48 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Solution {
+    static int maxjumsu, n, limit;
+    static int[] jumsu, kcal;
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int tc = Integer.parseInt(br.readLine());
+
+        for (int t = 1; t <= tc; t++) {  // 테스트 케이스 수만큼 반복
+            maxjumsu = 0;  // 최대 점수를 초기화
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            n = Integer.parseInt(st.nextToken());
+            limit = Integer.parseInt(st.nextToken());
+
+            jumsu = new int[n];  // 음식의 점수를 저장하는 배열 초기화
+            kcal = new int[n];   // 음식의 칼로리를 저장하는 배열 초기화
+
+            for (int i = 0; i < n; i++) {
+                st = new StringTokenizer(br.readLine()); // 음식 정보를 입력으로 받음
+                jumsu[i] = Integer.parseInt(st.nextToken()); // 음식의 점수를 배열에 저장
+                kcal[i] = Integer.parseInt(st.nextToken());   // 음식의 칼로리를 배열에 저장
+            }
+
+            combination(0, 0, 0);  // 조합을 계산하고 최대 점수를 구하기 위한 함수 호출
+            System.out.println("#" + t + " " + maxjumsu);  // 결과를 출력
+        }
+    }
+
+    private static void combination(int depth, int sumJumsu, int sumKcal) {
+
+        if (sumKcal > limit) return;
+
+        if (depth == n) {
+            if (sumJumsu > maxjumsu) maxjumsu = sumJumsu;
+            return;
+        }
+
+        combination(depth + 1, sumJumsu + jumsu[depth], sumKcal + kcal[depth]);
+        combination(depth + 1, sumJumsu, sumKcal);
+    }
+
+}
