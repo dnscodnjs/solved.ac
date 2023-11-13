@@ -1,0 +1,51 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int tc = Integer.parseInt(br.readLine());
+
+        for (int TC = 0; TC < tc; TC++) {
+            Queue<Integer> que = new LinkedList<>();
+            Queue<Integer> queIdx = new LinkedList<>();
+
+            StringTokenizer st = new StringTokenizer(br.readLine());
+
+            int len = Integer.parseInt(st.nextToken());
+            int idx = Integer.parseInt(st.nextToken());
+
+            st = new StringTokenizer(br.readLine());
+
+            for (int i = 0; i < len; i++) {
+                que.add(Integer.parseInt(st.nextToken()));
+                queIdx.add(i);
+            }
+
+            int cnt = 1;
+            
+            while (!que.isEmpty()){
+
+                int max = Collections.max(que);
+
+                int now = que.poll();
+                int nowIdx = queIdx.poll();
+
+                if(now == max){
+                    if(nowIdx == idx){
+                        System.out.println(cnt);
+                        break;
+                    }
+                    cnt++;
+                }else {
+                    que.add(now);
+                    queIdx.add(nowIdx);
+                }
+            }
+        }
+    }
+}
+
