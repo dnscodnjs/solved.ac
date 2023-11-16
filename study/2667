@@ -1,0 +1,66 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
+import java.util.*;
+import java.util.StringTokenizer;
+
+public class Main {
+    static int[] dx = {-1, 1, 0, 0};
+    static int[] dy = {0, 0, -1, 1};
+    static int[][] branch;
+    static boolean[][] visited;
+    static int N, cnt;
+
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        N = Integer.parseInt(br.readLine());
+
+        branch = new int[N][N];
+        visited = new boolean[N][N];
+
+        for (int i = 0; i < N; i++) {
+
+            String str = br.readLine();
+            for (int j = 0; j < branch[i].length; j++) {
+                branch[i][j] = str.charAt(j) - '0';
+            }
+        }
+
+
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < branch[i].length; j++) {
+                cnt = 0;
+                if (branch[i][j] == 1 && !visited[i][j]) {
+                    cnt++;
+                    dfs(i, j);
+                }
+                if (cnt > 0) list.add(cnt);
+            }
+        }
+        Collections.sort(list);
+        System.out.println(list.size());
+        for (Integer num : list) {
+            System.out.println(num);
+        }
+    }
+
+    public static void dfs(int x, int y) {
+        visited[x][y] = true;
+
+        for (int k = 0; k < 4; k++) {
+
+            int nx = x + dx[k];
+            int ny = y + dy[k];
+
+            if (0 <= nx && nx < N && 0 <= ny && ny < N && !visited[nx][ny] && branch[nx][ny] == 1) {
+                cnt++;
+                dfs(nx, ny);
+            }
+
+        }
+    }
+}
