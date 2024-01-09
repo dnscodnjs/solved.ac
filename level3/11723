@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int tc = Integer.parseInt(br.readLine());
+        HashSet<Integer> set = new HashSet<>();
+
+        StringBuilder sb = new StringBuilder();
+        for (int TC = 0; TC < tc; TC++) {
+
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String str = st.nextToken();
+            int num = 0;
+            if (!str.equals("all") && !str.equals("empty")) {
+                num = Integer.parseInt(st.nextToken());
+            }
+            switch (str) {
+                case "add":
+                    set.add(num);
+                    break;
+                case "remove":
+                    set.remove(num);
+                    break;
+                case "check":
+                    sb.append(set.contains(num) ? "1\n" : "0\n");
+                    break;
+                case "toggle":
+                    if (set.contains(num)) {
+                        set.remove(num);
+                    } else {
+                        set.add(num);
+                    }
+                    break;
+                case "all":
+                    set.clear();
+                    for (int i = 1; i <= 20; i++) {
+                        set.add(i);
+                    }
+                    break;
+                case "empty":
+                    set.clear();
+                    break;
+            }
+        }
+        System.out.println(sb);
+    }
+}
