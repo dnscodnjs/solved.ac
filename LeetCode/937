@@ -1,0 +1,35 @@
+class Solution {
+
+    public String[] reorderLogFiles(String[] logs) {
+
+        ArrayList<String> letters = new ArrayList<>();
+        ArrayList<String> digits = new ArrayList<>();
+
+        for(String str : logs){
+            if(Character.isDigit(str.split(" ")[1].charAt(0))){
+                digits.add(str);
+            }else letters.add(str);
+        }
+
+        letters.sort(
+            (o1, o2) -> {
+                String idt1 = o1.split(" ")[0];
+                String idtAll1 = o1.substring(idt1.length());
+
+                
+                String idt2 = o2.split(" ")[0];
+                String idtAll2 = o2.substring(idt2.length());
+
+                if(idtAll1.equals(idtAll2)){
+                    return idt1.compareTo(idt2);
+                }else{
+                    return idtAll1.compareTo(idtAll2);
+                }
+            }
+        );
+
+        letters.addAll(digits);
+
+        return letters.toArray(new String[0]);
+    }
+}
