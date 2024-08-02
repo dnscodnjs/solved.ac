@@ -1,0 +1,34 @@
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+
+public class B_11652 {
+    public static void main(String[] args) throws IOException {
+        HashMap<Long, Integer> hm = new HashMap<>();
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = Integer.parseInt(br.readLine());
+
+        int max = 0;
+        long x = 0;
+        for (int i = 0; i < n; i++) {
+            long l = Long.parseLong(br.readLine());
+            hm.put(l, hm.getOrDefault(l, 0) + 1);
+
+            // 최댓값 구하고, 최댓값이랑 같으면 작은 숫자 구하기 
+            if(hm.get(l) > max) {
+                max = hm.get(l);
+                x = l;
+            }else if (hm.get(l) == max){
+                x = Math.min(x, l);
+            }
+        }
+
+        System.out.println(x);
+
+    }
+}
